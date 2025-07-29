@@ -5,7 +5,7 @@ const bodyElement = document.body;
 const bigImageElement = bigPictureElement.querySelector('.big-picture__img img');
 const likesCountElement = bigPictureElement.querySelector('.likes-count');
 const captionElement = bigPictureElement.querySelector('.social__caption');
-const commentsList = bigPictureElement.querySelector('.social__comments');
+const commentsListElement = bigPictureElement.querySelector('.social__comments');
 const commentCountBlockElement = bigPictureElement.querySelector('.social__comment-count');
 const commentsLoaderElement = bigPictureElement.querySelector('.comments-loader');
 const shownCommentsCountElement = bigPictureElement.querySelector('.social__comment-shown-count');
@@ -42,7 +42,7 @@ function renderComments() {
   const toShow = comments.slice(shownCount, next);
 
   toShow.forEach((comment) => fragment.appendChild(createComment(comment)));
-  commentsList.appendChild(fragment);
+  commentsListElement.appendChild(fragment);
 
   shownCount += toShow.length;
 
@@ -68,7 +68,7 @@ export function showBigPicture(photo) {
 
   comments = photo.comments;
   shownCount = 0;
-  commentsList.innerHTML = '';
+  commentsListElement.innerHTML = '';
   commentCountBlockElement.classList.remove('hidden');
   commentsLoaderElement.classList.remove('hidden');
   renderComments();
